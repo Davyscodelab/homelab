@@ -15,7 +15,7 @@ Documentatie van mijn thuisinfrastructuur — apparaten, services en netwerk.
 | Service | Apparaat | Functie |
 |---|---|---|
 | PiHole | Tuvok | DNS-sinkhole — advertentie- en trackerblokking voor het hele netwerk |
-| Proxmox VE | PX01 | Virtualisatieplatform voor VMs en containers |
+| Proxmox VE | PROX01 | Virtualisatieplatform voor VMs en containers |
 
 ## Netwerk
 
