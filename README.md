@@ -12,10 +12,10 @@ Documentatie van mijn thuisinfrastructuur — apparaten, services en netwerk.
 
 ## Virtualisatie (PROX1)
 
-| Naam                | Type | OS     | IP             | Rol              |
-| ------------------- | ---- | ------ | -------------- | ---------------- |
-| MonitorPX           | VM   | Ubuntu | 192.168.50.130 | Monitoring stack |
-| NGINX Proxy Manager | LXC  | —      | 192.168.50.131 | Reverse proxy    |
+| Naam                | Type | OS     | Rol              |
+| ------------------- | ---- | ------ | --------------   | 
+| MonitorPX           | VM   | Ubuntu | Monitoring stack |
+| NGINX Proxy Manager | LXC  | —      | Reverse proxy    |
 
 ## Services
 
@@ -35,7 +35,7 @@ Documentatie van mijn thuisinfrastructuur — apparaten, services en netwerk.
 | Apparaat           | Rol                                            |
 | ------------------ | ---------------------------------------------- |
 | Telenet modem      | Internetverbinding                             |
-| TP-Link Archer C6  | Access point — WiFi 5 dual-band (2.4 + 5 GHz) |
+| TP-Link Archer C6  | Access point 								  |
 | TP-Link Archer C80 | Access point                                   |
 
 DNS voor alle apparaten wordt afgehandeld door Pi-hole op Tuvok.  
