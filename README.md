@@ -4,46 +4,36 @@ Documentatie van mijn thuisinfrastructuur — apparaten, services en netwerk.
 
 ## Apparaten
 
-| Apparaat | Hardware                               | OS              | Rol                  |
-| -------- | -------------------------------------- | --------------- | -------------------- |
-| Tuvok    | Raspberry Pi 4B, 4 GB RAM              | Raspberry Pi OS | Services (zie onder) |
-| PROX1    | Dell Optiplex 3070, i5-9500, 16 GB RAM | Proxmox VE      | Hypervisor           |
-| DESKTOP  | i5-13400F, 32 GB DDR4, RTX 3070        | Windows         | Hoofdwerkstation     |
+| Apparaat | Hardware                               | OS              | Rol                    |
+| -------- | -------------------------------------- | --------------- | ---------------------- |
+| DESKTOP  | i5-13400F, 32 GB DDR4, RTX 3070        | Windows         | Hoofdwerkstation       |
+| Tuvok    | Raspberry Pi 4B, 4 GB RAM              | Raspberry Pi OS | Service provider   |
+| PROX1    | Dell Optiplex 3070, i5-9500, 16 GB RAM | Proxmox VE 9.1  | Service provider |
 
-## Virtualisatie (PROX1)
-
-| Naam                | Type | OS     | Rol              |
-| ------------------- | ---- | ------ | --------------   | 
-| MonitorPX           | VM   | Ubuntu | Monitoring stack |
-| NGINX Proxy Manager | LXC  | —      | Reverse proxy    |
 
 ## Services
-
-| Service             | Apparaat          | Functie                                        |
-| ------------------- | ----------------- | ---------------------------------------------- |
-| Pi-hole             | Tuvok             | DNS-sinkhole — advertentie- en trackerblokking |
-| Portainer           | Tuvok             | Docker-beheer via web UI                       |
-| Proxmox VE          | PROX1             | Virtualisatieplatform voor VMs en LXCs         |
-| Node Exporter       | PROX1 + MonitorPX | Systeemmetrics voor Prometheus                 |
-| Prometheus          | MonitorPX         | Metrics-opslag en scraping                     |
-| Grafana             | MonitorPX         | Dashboarding en visualisatie                   |
-| Grafana Alloy       | MonitorPX         | Log-forwarding                                 |
-| NGINX Proxy Manager | PROX1 (LXC)       | Reverse proxy voor lokale services             |
+ 
+| Service              | Apparaat     | Functie                                                                   |
+| --------------------- | ------------ | -------------------------------------------------------------------------- |
+| Proxmox VE            | PROX1        | Virtualisatieplatform voor VMs en containers                              |
+| Portainer              | Tuvok        | Beheer van Docker-containers (lokaal en op VMs)                           |
+| PiHole                | Tuvok        | DNS-sinkhole — advertentie- en trackerblokking voor het hele netwerk       |
+| NGINX Proxy Manager   | PROX1 (LXC)  | Reverse proxy — centrale toegang tot alle diensten via lokale domeinnamen |
+| Heimdall              | PROX1 (VM)   | Homepage/dashboard met overzicht van alle diensten                        |
+| Grafana/Prometheus/Loki| PROX1 (VM)   | Opslag en visualisatie van metrics en logs                               |
+| ntopng                | PROX1 (VM)   | Netwerkmonitoring                                                         |
+| draw.io               | PROX1 (VM)   | Zelf-gehoste diagramtool                                                  |
 
 ## Netwerk
 
-| Apparaat           | Rol                                            |
-| ------------------ | ---------------------------------------------- |
-| Telenet modem      | Internetverbinding                             |
-| TP-Link Archer C6  | Access point 								  |
-| TP-Link Archer C80 | Access point                                   |
+| Apparaat           | Rol                                           |
+| ------------------ | --------------------------------------------- |
+| Telenet modem      | Internetverbinding                            |
+| TP-Link Archer C6  | Access point — WiFi 5 dual-band (2.4 + 5 GHz) |
+| TP-Link Archer C80 | Access point                                  |
 
-DNS voor alle apparaten wordt afgehandeld door Pi-hole op Tuvok.  
+DNS voor alle apparaten wordt afgehandeld door PiHole op Tuvok.
 Kritieke apparaten hebben een vast IP-adres.
-
-## Beveiliging
-
-- SSH-toegang op Tuvok via key-authenticatie (wachtwoordlogin uitgeschakeld)
 
 ## Documentatie
 
